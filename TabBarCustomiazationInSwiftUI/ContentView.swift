@@ -38,10 +38,30 @@ struct ContentView: View {
                 }
                 .tag(1)
             
-        }.onAppear {
-            UITabBar.appearance().backgroundColor = .orange
-            UITabBar.appearance().tintColor = .purple
-        }.accentColor(.purple)
+        }
+    }
+}
+
+extension UITabBarController {
+    override open func viewDidLoad() {
+        let standardAppearance = UITabBarAppearance()
+        
+        // standardAppearance.backgroundColor = .orange
+        // or
+        // standardAppearance.backgroundImage = UIImage(named: "img3")
+        // or
+        //standardAppearance.configureWithTransparentBackground()
+        
+        standardAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.red]
+        standardAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.red]
+        
+        standardAppearance.inlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.green]
+        standardAppearance.inlineLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.green]
+        
+        standardAppearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.blue]
+        standardAppearance.compactInlineLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.blue]
+        
+        tabBar.standardAppearance = standardAppearance
     }
 }
 
