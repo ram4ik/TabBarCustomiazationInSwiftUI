@@ -9,8 +9,39 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var selection = 0
+    
     var body: some View {
-        Text("Hello World")
+        TabView(selection: $selection) {
+            Text("First View")
+                .font(.title)
+                .tabItem {
+                    VStack {
+                        Image(systemName: "doc")
+                            .font(.title)
+                        Text("First")
+                            .font(.title)
+                    }
+                }
+                .tag(0)
+            
+            Text("Second View")
+                .font(.title)
+                .tabItem {
+                    VStack {
+                        Image(systemName: "paperclip")
+                            .font(.title)
+                        Text("Second")
+                            .font(.title)
+                    }
+                }
+                .tag(1)
+            
+        }.onAppear {
+            UITabBar.appearance().backgroundColor = .orange
+            UITabBar.appearance().tintColor = .purple
+        }.accentColor(.purple)
     }
 }
 
